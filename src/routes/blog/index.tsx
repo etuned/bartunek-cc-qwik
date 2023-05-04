@@ -1,22 +1,23 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import { component$ } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Infobox from '~/components/ui/contentbox';
+import Infobox from "~/components/ui/contentbox";
+import GradientLine from "~/components/ui/gradientLine";
 
 export default component$(() => {
   return (
     <>
-      <div class="section">
-        <div class="container topics">
+      <GradientLine />
+      <div class="bg-blue">
+        <div class="content-container">
           <Infobox>
             <div q:slot="title" class="icon icon-cli">
               Blog
             </div>
             <>
-              <p>Coming soon</p>
+              <p>coming soon.</p>
             </>
           </Infobox>
-
         </div>
       </div>
     </>
@@ -24,11 +25,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Blog | Edwin Bartunek',
+  title: "Blog | Edwin Bartunek",
   meta: [
     {
-      name: 'description',
-      content: 'Qwik site description',
+      name: "description",
+      content: "Qwik site description",
     },
   ],
 };
