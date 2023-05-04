@@ -29,7 +29,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "Various topics about the web and life in general according to Edwin.",
     },
   ],
 };

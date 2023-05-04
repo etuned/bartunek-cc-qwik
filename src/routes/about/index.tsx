@@ -33,7 +33,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "Learn more about Edwin.",
     },
   ],
 };
