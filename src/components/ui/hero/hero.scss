@@ -1,0 +1,43 @@
+ #intro {
+   padding-bottom: 2.5rem;
+
+   p {
+     font-size: 1rem;
+     line-height: 1.5;
+   }
+
+   .name {
+     font-family: var(--mono);
+   }
+
+   span {
+     font-family: var(--sans);
+     font-size: 4rem;
+     color: var(--aqua);
+     display: block;
+   }
+
+   h2 {
+     font-size: 2.5rem;
+     font-weight: normal;
+   }
+
+   .inner-container {
+      max-width: 730px;
+   }
+
+  .flex-responsive-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  
+    @media (min-width: 850px) {
+          padding-bottom: 5rem;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-direction: row;
+        }
+  }
+ }

@@ -1,38 +1,28 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
-
-import Hero from "~/components/ui/hero/hero";
-import Infobox from "~/components/ui/contentbox";
-
-import { getAuthor, getProjects } from "../../lib/sanity/api";
-import type { Author, Project } from "~/types";
+import Contentbox from "~/components/ui/contentbox";
 import GradientLine from "~/components/ui/gradientLine";
 import ProjectCard from "~/components/ui/projectCard";
+import { getProjects } from "~/sanity/api";
 
-export const useAuthorData = routeLoader$(async () => {
-  const author = await getAuthor("Edwin Bartunek");
-  return author as Author;
-});
+import type { Project } from "~/types";
 
-export const useInProgressProjectData = routeLoader$(async () => {
-  const projects = await getProjects("0..2", false);
+export const useProjectsData = routeLoader$(async () => {
+  const projects = await getProjects();
   return projects as Project[];
 });
 
 export default component$(() => {
-  const projects = useInProgressProjectData();
+  const projects = useProjectsData();
   return (
     <>
-      <Hero />
       <GradientLine />
-      <div class="section bg-blue">
+      <div class="bg-blue">
         <div class="content-container topics">
-          <Infobox>
-            <div q:slot="title" class="icon icon-cli">
-              My Recent Projects
-            </div>
+          <Contentbox>
             <>
+              <div q:slot="title">My Projects</div>
               {projects.value.map((project, index) => (
                 <ProjectCard
                   key={project._id}
@@ -51,7 +41,7 @@ export default component$(() => {
                 />
               ))}
             </>
-          </Infobox>
+          </Contentbox>
         </div>
       </div>
     </>
@@ -59,7 +49,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Edwin Bartunek - A Software Engineer",
+  title: "Projects | Edwin Bartunek",
   meta: [
     {
       name: "description",
