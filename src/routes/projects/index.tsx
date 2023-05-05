@@ -4,12 +4,12 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
 import GradientLine from "~/components/ui/gradientLine";
 import ProjectCard from "~/components/ui/projectCard";
-import { getProjects } from "~/sanity/api";
+import { getProjects } from "../../api";
 
 import type { Project } from "~/types";
 
 export const useProjectsData = routeLoader$(async () => {
-  const projects = await getProjects();
+  const projects = await getProjects("desc");
   return projects as Project[];
 });
 
