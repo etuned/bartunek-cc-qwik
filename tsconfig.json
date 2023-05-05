@@ -18,9 +18,9 @@
     "noEmit": true,
     "types": ["node", "vite/client"],
     "paths": {
-      "~/*": ["./src/*", "./lib/*"]
+      "~/*": ["./src/*"]
     }
   },
   "files": ["./.eslintrc.cjs"],
-  "include": ["src","lib"]
+  "include": ["src"]
 }
