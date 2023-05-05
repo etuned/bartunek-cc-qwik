@@ -4,7 +4,7 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
 import GradientLine from "~/components/ui/gradientLine";
 import ProjectCard from "~/components/ui/projectCard";
-import { getProjects } from "../../api";
+import { getProjects } from "~/lib/sanity/api";
 
 import type { Project } from "~/types";
 

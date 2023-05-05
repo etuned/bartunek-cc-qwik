@@ -1,4 +1,4 @@
-import { client } from "../lib/sanity/pico"
+import { client } from "./pico"
 
 
 
