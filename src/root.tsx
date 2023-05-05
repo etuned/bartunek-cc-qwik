@@ -23,6 +23,9 @@ export default component$(() => {
           type="text/partytown"
           src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
         />
+        <script type="text/partytown">
+          gtag('js', new Date()); gtag('config', 'G-MCCJK1H53R');
+        </script>
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
       </head>
