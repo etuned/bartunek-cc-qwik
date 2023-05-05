@@ -17,14 +17,14 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
-        <link rel="manifest" href="/manifest.json" />
-        <RouterHead />
         <QwikPartytown forward={["dataLayer.push"]} />
         <script
           async
           type="text/partytown"
           src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
         />
+        <link rel="manifest" href="/manifest.json" />
+        <RouterHead />
       </head>
       <body lang="en">
         <RouterOutlet />
