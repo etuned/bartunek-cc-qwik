@@ -25,7 +25,7 @@ export default component$(() => {
       scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
       console.log("[PROD]: GA4 init");
     } else {
-      console.log("[dev]: GA4 skipped");
+      console.log("[DEV]: GA4 skipped");
     }
     return () => {};
   });
