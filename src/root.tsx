@@ -15,20 +15,15 @@ export default component$(() => {
 
   // I do not like this method. Need to refactor for better performance.
   useVisibleTask$(() => {
+    if (import.meta.env.DEV) return;
     const GtmUrl = document.getElementById("gtm");
     const scriptTag = document.getElementById("gtag");
     if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
       GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
     }
     if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
-      scriptTag.innerText = `
-          window.dataLayer
-          = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new
-          Date());gtag('config', 'G-MCCJK1H53R');`;
-
+      scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
       console.log("[PROD]: GA4 init");
-    } else {
-      console.log("[DEV]: skipping google analytics");
     }
     return () => {};
   });
