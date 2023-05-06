@@ -8,7 +8,9 @@ import { partytownSnippet, PartytownConfig } from "@builder.io/partytown/integra
  *
  * @public
  */
-export interface PartytownProps extends PartytownConfig {}
+export interface PartytownProps extends PartytownConfig {
+  forward: ["dataLayer.push"];
+}
 
 /**
  * @public
