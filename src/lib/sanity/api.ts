@@ -72,7 +72,6 @@ export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` 
       }
     }
     `
-    console.log(projectQuery)
     const response = await client
         .fetch(projectQuery)
         .then((projects) => projects)

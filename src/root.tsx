@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { QwikPartytown } from "./components/partytown/partytown";
@@ -13,18 +13,34 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
 
+  // I do not like this method. Need to refactor for better performance.
+  useVisibleTask$(() => {
+    const GtmUrl = document.getElementById("gtm");
+    const scriptTag = document.getElementById("gtag");
+    if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
+      GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
+    }
+    if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
+      scriptTag.innerText = `
+          window.dataLayer
+          = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new
+          Date());gtag('config', 'G-MCCJK1H53R');`;
+
+      console.log("[PROD]: GA4 init");
+    } else {
+      console.log("[DEV]: skipping google analytics");
+    }
+    return () => {};
+  });
   return (
     <QwikCityProvider>
       <head>
         <meta charSet="utf-8" />
-        <QwikPartytown forward={["dataLayer.push"]} />
-        <script
-          async
-          type="text/partytown"
-          src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
-        />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
+        <QwikPartytown forward={["dataLayer.push"]} />
+        <script id="gtm" type="text/partytown" />
+        <script type="text/partytown" id="gtag"></script>
       </head>
       <body lang="en">
         <RouterOutlet />
