@@ -14,8 +14,8 @@ export default component$(() => {
    */
 
   // I do not like this method. Need to refactor for better performance.
+
   useVisibleTask$(() => {
-    if (import.meta.env.DEV) return;
     const GtmUrl = document.getElementById("gtm");
     const scriptTag = document.getElementById("gtag");
     if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
@@ -24,6 +24,8 @@ export default component$(() => {
     if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
       scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
       console.log("[PROD]: GA4 init");
+    } else {
+      console.log("[dev]: GA4 skipped");
     }
     return () => {};
   });
@@ -34,8 +36,8 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <QwikPartytown forward={["dataLayer.push"]} />
-        <script id="gtm" type="text/partytown" />
-        <script type="text/partytown" id="gtag"></script>
+        <script type="text/partytown" id="gtm" />
+        <script type="text/partytown" id="gtag" />
       </head>
       <body lang="en">
         <RouterOutlet />
