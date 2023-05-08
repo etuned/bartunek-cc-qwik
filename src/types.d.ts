@@ -1,4 +1,39 @@
 
+export interface Post {
+    _id?: string;
+    _createdAt?: string;
+    _updatedAt?: string;
+    title?: string;
+    slug?: string;
+    mainImage?: {
+        alt: string;
+        src: string;
+        lqip: string;
+        colorDominant: {
+            background: string;
+            foreground: string;
+            title: string;
+        }
+        colorVibrant: {
+            background: string;
+            foreground: string;
+            title: string;
+        }
+    }
+    date?: string;
+    categories?: [
+        {
+        _id: string;
+        name: string;
+        description: string;
+        }
+    ]
+    authors?: [Author]
+    short?: string;
+    mainContent?: [object]
+}
+
+
 export interface Project {
     _id?: string;
     _createdAt?: string;
