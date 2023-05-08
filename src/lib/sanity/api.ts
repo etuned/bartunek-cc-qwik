@@ -1,6 +1,66 @@
 import { client } from "./pico"
 
+export async function getData( query: string ) {
+    const dataQuery = query
+    const response = await client
+        .fetch(dataQuery)
+        .then((data) => data)
+        .catch((err) => console.error('Oh noes: %s', err.message))
+    return response
+}
 
+
+export async function getPosts( slug?: string, order?: "asc" | "desc", slice?: `[${number}]` | `[${number}...${number}]`) {
+    const postQuery = `
+    *[_type == "post"  ${slug ? `&& slug.current == "${slug}" ` : ''}]${
+      slice ? slice : ''
+  }${order ? `| order(date ${order})`: ''} 
+    {
+        _id,
+        title,
+        "slug": slug.current,
+        date,
+        categories[] {
+        _type == 'reference' => @->{_id, name},
+      },
+       authors[] {
+        _type == 'reference' => @->{
+          _id,
+          name, 
+          image {
+                alt,
+                "src": image.asset->url,
+                "lqip": image.asset->metadata.lqip,
+                "colorDominant": image.asset->metadata.palette.dominant{
+                background, foreground, title
+                },
+                "colorVibrant": image.asset->metadata.palette.vibrant{
+          background, foreground, title
+                }
+              },
+            },
+          },
+        mainImage {
+        alt,
+        "src": image.asset->url,
+        "lqip": image.asset->metadata.lqip,
+        "colorDominant": image.asset->metadata.palette.dominant{
+          background, foreground, title
+        },
+        "colorVibrant": image.asset->metadata.palette.vibrant{
+          background, foreground, title
+        }
+        },
+        short,
+        mainContent
+    }
+    `
+    const response = await client
+        .fetch(postQuery)
+        .then((posts) => posts)
+        .catch((err) => console.error('Oh noes: %s', err.message))
+    return response
+}
 
 
 export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` | `[${number}...${number}]`, isNotInProgress?: boolean) {
