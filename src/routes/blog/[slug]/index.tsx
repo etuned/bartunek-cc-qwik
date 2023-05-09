@@ -1,4 +1,4 @@
-import { component$, useStyles$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
@@ -7,7 +7,6 @@ import { getPosts } from "~/lib/sanity/api";
 import type { Post } from "~/types";
 import { Image } from "@unpic/qwik";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
-import styles from "./blog-detail-page.scss?inline";
 
 export const usePostByParam = routeLoader$(async ({ params }) => {
   const post = await getPosts(params.slug, undefined, `[${0}]`);
@@ -15,7 +14,6 @@ export const usePostByParam = routeLoader$(async ({ params }) => {
 });
 
 export default component$(() => {
-  useStyles$(styles);
   const post = usePostByParam();
   if (!post.value) {
     return (
