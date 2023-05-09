@@ -102,6 +102,7 @@ export interface Project {
 }
 
 interface Author {
+    _id: string;
     name: string;
     image: {
         alt: string;
