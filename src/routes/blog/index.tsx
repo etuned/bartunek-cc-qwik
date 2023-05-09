@@ -19,7 +19,7 @@ export const useBlogTitleData = routeLoader$(async () => {
 });
 
 export default component$(() => {
-  //const postTitles = useBlogTitleData();
+  // const postTitles = useBlogTitleData();
   return (
     <>
       <GradientLine />

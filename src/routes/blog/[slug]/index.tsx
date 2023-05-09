@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useStyles$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
@@ -7,6 +7,7 @@ import { getPosts } from "~/lib/sanity/api";
 import type { Post } from "~/types";
 import { Image } from "@unpic/qwik";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
+import styles from "./blog-detail-page.scss?inline";
 
 export const usePostByParam = routeLoader$(async ({ params }) => {
   const post = await getPosts(params.slug, undefined, `[${0}]`);
@@ -14,6 +15,7 @@ export const usePostByParam = routeLoader$(async ({ params }) => {
 });
 
 export default component$(() => {
+  useStyles$(styles);
   const post = usePostByParam();
   if (!post.value) {
     return (
@@ -34,31 +36,71 @@ export default component$(() => {
       </>
     );
   } else {
-    const { title, date, mainImage } = post.value;
-    console.log(mainImage);
+    const { title, date, mainImage, authors, categories, short, mainContent } = post.value;
     return (
       <>
         <GradientLine />
         <div class="bg-blue">
           <div class="content-container">
             <Contentbox>
-              <div q:slot="title" class="icon icon-cli">
-                {title}
-              </div>
               <>
-                {date && <p>Published: {new Date(date).toLocaleString()}</p>}
-                {mainImage && (
-                  <Image
-                    background={
-                      mainImage.blurhash
-                        ? blurhashToCssGradientString(mainImage.blurhash)
-                        : "##4e4e4e"
-                    }
-                    src={`${mainImage?.src}`}
-                    alt={mainImage?.alt}
-                    layout="fullWidth"
-                  />
-                )}
+                <div>
+                  <div>
+                    <div class="title">
+                      <h1>{title}</h1>
+                    </div>
+                    {mainImage && (
+                      <Image
+                        background={
+                          mainImage.blurhash
+                            ? blurhashToCssGradientString(mainImage.blurhash)
+                            : "#4e4e4e"
+                        }
+                        src={`${mainImage?.src}`}
+                        alt={mainImage?.alt}
+                        width={1200}
+                        height={550}
+                      />
+                    )}
+                    <div class="div2">
+                      <p>written by</p>
+                      {authors?.map(({ _id, name, image }) => (
+                        <div class="author-card" key={_id}>
+                          <p>{name}</p>
+                          {image && (
+                            <Image
+                              background={
+                                image.blurhash
+                                  ? blurhashToCssGradientString(image.blurhash)
+                                  : "#4e4e4e"
+                              }
+                              src={`${image?.src}`}
+                              alt={image?.alt}
+                              width={85}
+                              height={85}
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div class="div3">
+                      {date && <p>Published: {new Date(date).toLocaleString()}</p>}
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  {categories?.map(({ _id, name }) => (
+                    <div class="categories-pill" key={_id}>
+                      <p>{name}</p>
+                    </div>
+                  ))}
+                </div>
+                <section>
+                  <p>{short}</p>
+
+                  {JSON.stringify(mainContent)}
+                </section>
               </>
             </Contentbox>
           </div>
