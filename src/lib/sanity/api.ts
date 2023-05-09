@@ -30,6 +30,7 @@ export async function getPosts( slug?: string, order?: "asc" | "desc", slice?: `
           image {
                 alt,
                 "src": image.asset->url,
+                "blurhash": image.asset->metadata.blurHash,
                 "lqip": image.asset->metadata.lqip,
                 "colorDominant": image.asset->metadata.palette.dominant{
                 background, foreground, title
@@ -43,6 +44,7 @@ export async function getPosts( slug?: string, order?: "asc" | "desc", slice?: `
         mainImage {
         alt,
         "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
         "lqip": image.asset->metadata.lqip,
         "colorDominant": image.asset->metadata.palette.dominant{
           background, foreground, title
@@ -75,6 +77,7 @@ export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` 
       mainImage{
         alt,
         "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
         "lqip": image.asset->metadata.lqip,
         "colorDominant": image.asset->metadata.palette.dominant{
           background, foreground, title
@@ -102,6 +105,7 @@ export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` 
       image{
         alt,
         "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
         "lqip": image.asset->metadata.lqip,
         "colorDominant": image.asset->metadata.palette.dominant{
           background, foreground, title
@@ -121,6 +125,7 @@ export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` 
         image{
         alt,
         "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
         "lqip": image.asset->metadata.lqip,
         "colorDominant": image.asset->metadata.palette.dominant{
           background, foreground, title
@@ -146,6 +151,7 @@ export async function getAuthor(authorName?: string, slice: number = 0) {
         image {
         alt,
         "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
         "lqip": image.asset->metadata.lqip,
         "colorDominant": image.asset->metadata.palette.dominant{
           background, foreground, title

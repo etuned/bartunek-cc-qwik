@@ -2,6 +2,7 @@ import { component$, useStyles$ } from "@builder.io/qwik";
 import type { Project } from "~/types";
 import { Image } from "@unpic/qwik";
 import styles from "./projectCard.scss?inline";
+import { blurhashToCssGradientString } from "@unpic/placeholder";
 
 export default component$<Project>(
   ({ index, name, dates, codeUrl, liveUrl, short, technologies, employer, mainImage }) => {
@@ -43,7 +44,7 @@ export default component$<Project>(
               <div class="employer">
                 <Image
                   class="img-small"
-                  src={employer?.image.src + "?h=100&w=100&fit=crop&crop=center&auto=format"}
+                  src={employer?.image.src + "?h=70&w=70&fit=crop&crop=center&auto=format"}
                   alt={employer?.image.alt}
                   width={70}
                   height={70}
@@ -58,8 +59,10 @@ export default component$<Project>(
           </div>
           <div class={index % 2 == 0 ? "image" : "image-reverse"}>
             <Image
+              background={
+                mainImage?.blurhash ? blurhashToCssGradientString(mainImage.blurhash) : "##4e4e4e"
+              }
               src={mainImage ? mainImage.src : "404img.png"}
-              placeholder={mainImage ? mainImage.lqip : "#ccc"}
               alt={mainImage ? mainImage.alt : "coming soon"}
               layout="constrained"
               width={555}

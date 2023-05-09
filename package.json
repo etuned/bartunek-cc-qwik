@@ -45,6 +45,7 @@
     "npm": "9.6.4"
   },
   "dependencies": {
+    "@unpic/placeholder": "^0.1.2",
     "@unpic/qwik": "^0.0.17",
     "picosanity": "^4.0.0"
   }

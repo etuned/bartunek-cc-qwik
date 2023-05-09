@@ -6,6 +6,7 @@ import GradientLine from "~/components/ui/gradientLine";
 import { getPosts } from "~/lib/sanity/api";
 import type { Post } from "~/types";
 import { Image } from "@unpic/qwik";
+import { blurhashToCssGradientString } from "@unpic/placeholder";
 
 export const usePostByParam = routeLoader$(async ({ params }) => {
   const post = await getPosts(params.slug, undefined, `[${0}]`);
@@ -34,6 +35,7 @@ export default component$(() => {
     );
   } else {
     const { title, date, mainImage } = post.value;
+    console.log(mainImage);
     return (
       <>
         <GradientLine />
@@ -47,7 +49,11 @@ export default component$(() => {
                 {date && <p>Published: {new Date(date).toLocaleString()}</p>}
                 {mainImage && (
                   <Image
-                    placeholder={mainImage?.lqip}
+                    background={
+                      mainImage.blurhash
+                        ? blurhashToCssGradientString(mainImage.blurhash)
+                        : "##4e4e4e"
+                    }
                     src={`${mainImage?.src}`}
                     alt={mainImage?.alt}
                     layout="fullWidth"

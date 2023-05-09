@@ -8,6 +8,7 @@ export interface Post {
     mainImage?: {
         alt: string;
         src: string;
+        blurhash: string;
         lqip: string;
         colorDominant: {
             background: string;
@@ -43,6 +44,7 @@ export interface Project {
     mainImage?: {
         alt: string;
         src: string;
+        blurhash: string;
         lqip: string;
         colorDominant: {
             background: string;
@@ -74,6 +76,7 @@ export interface Project {
         image: {
             alt: string;
             src: string;
+            blurhash: string;
             lqip: string;
             colorDominant: {
                 background: string;
@@ -103,6 +106,7 @@ interface Author {
     image: {
         alt: string;
         src: string;
+        blurhash: string;
         lqip: string;
         colorDominant: {
             background: string;
