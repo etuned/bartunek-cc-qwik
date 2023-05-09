@@ -1,11 +1,11 @@
 import { component$ } from "@builder.io/qwik";
-import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import { routeLoader$ } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
 import GradientLine from "~/components/ui/gradientLine";
 import { getPosts } from "~/lib/sanity/api";
 import type { Post } from "~/types";
 import { Image } from "@unpic/qwik";
-import { title } from "process";
 
 export const usePostByParam = routeLoader$(async ({ params }) => {
   const post = await getPosts(params.slug, undefined, `[${0}]`);
