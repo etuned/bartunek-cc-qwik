@@ -1,4 +1,5 @@
-# Qwik City App ⚡️
+# My Personal Site built with Qwik City ⚡️
+## Here is the Qwik Documentation
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
