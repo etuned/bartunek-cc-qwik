@@ -85,3 +85,12 @@ a:hover {
   padding: 3rem 1rem;
 }
 
+.centered {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+

@@ -8,9 +8,6 @@ export default component$(() => {
       <h3 class="title">
         <Slot name="title" />
       </h3>
-      <div class="centered">
-        <Slot name="centered" />
-      </div>
       <Slot />
     </div>
   );

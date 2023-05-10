@@ -11,7 +11,7 @@ export default component$(() => {
         <div class="content-container">
           <Contentbox>
             <div q:slot="title">404 Error - Page Not Found</div>
-            <div q:slot="centered">
+            <div class="centered">
               <img
                 src="404-page-img.png"
                 width={200}
