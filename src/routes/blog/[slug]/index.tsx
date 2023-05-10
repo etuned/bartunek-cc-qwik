@@ -7,6 +7,7 @@ import { getPosts } from "~/lib/sanity/api";
 import type { Post } from "~/types";
 import { Image } from "@unpic/qwik";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
+import PortableText from "~/lib/sanity/PortableText";
 
 export const usePostByParam = routeLoader$(async ({ params }) => {
   const post = await getPosts(params.slug, undefined, `[${0}]`);
@@ -34,7 +35,7 @@ export default component$(() => {
       </>
     );
   } else {
-    const { title, date, mainImage, authors, categories, short, mainContent } = post.value;
+    const { title, date, mainImage, authors, categories, mainContent } = post.value;
     return (
       <>
         <GradientLine />
@@ -95,9 +96,7 @@ export default component$(() => {
                   ))}
                 </div>
                 <section>
-                  <p>{short}</p>
-
-                  {JSON.stringify(mainContent)}
+                  <PortableText render={mainContent} />
                 </section>
               </>
             </Contentbox>
