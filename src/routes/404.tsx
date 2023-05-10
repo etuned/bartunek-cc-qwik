@@ -2,7 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Contentbox from "~/components/ui/contentbox";
 import GradientLine from "~/components/ui/gradientLine";
-import { Image } from "@unpic/qwik";
 
 export default component$(() => {
   return (
