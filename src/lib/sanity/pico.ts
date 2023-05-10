@@ -1,3 +1,4 @@
+import { toHTML } from '@portabletext/to-html'
 import PicoSanity from 'picosanity'
 
 export const client = new PicoSanity({
@@ -6,3 +7,4 @@ export const client = new PicoSanity({
   apiVersion: '2021-03-25',
   useCdn: true,
 })
+
