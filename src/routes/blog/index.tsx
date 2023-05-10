@@ -19,7 +19,7 @@ export const useBlogTitleData = routeLoader$(async () => {
 });
 
 export default component$(() => {
-  // const postTitles = useBlogTitleData();
+  const postTitles = useBlogTitleData();
   return (
     <>
       <GradientLine />
@@ -30,15 +30,14 @@ export default component$(() => {
               Blog
             </div>
             <>
-              <p>coming soon</p>
-              {/* <h3>Here are some Posts. I promise I will make this page a bit better soon.</h3>
+              <h3>Here are some Posts. I promise I will make this page a bit better soon.</h3>
               <ul>
                 {postTitles.value.map(({ _id, title, slug }) => (
                   <li key={_id}>
-                    <Link href={`/blog/${slug}`}>{title}</Link>
+                    <a href={`/blog/${slug}`}>{title}</a>
                   </li>
                 ))}
-              </ul> */}
+              </ul>
             </>
           </Infobox>
         </div>
