@@ -3,7 +3,6 @@ import { LogoIcon } from "../icons/logo";
 import { LinkedinIcon } from "../icons/linkedin";
 import { GithubIcon } from "../icons/github";
 import styles from "./header.scss?inline";
-import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   useStyles$(styles);
@@ -12,29 +11,29 @@ export default component$(() => {
       <ul>
         <li>
           <h1>
-            <Link href="/">
+            <a href="/">
               <span aria-hidden="true">
                 <LogoIcon />
               </span>
               <span class="sr-only">Home</span>
-            </Link>
+            </a>
           </h1>
         </li>
         <li>
-          <Link href="/projects">Projects</Link>
+          <a href="/projects">Projects</a>
         </li>
         <li>
-          <Link href="/about">About</Link>
+          <a href="/about">About</a>
         </li>
         <li>
-          <Link href="/blog">Blog</Link>
+          <a href="/blog">Blog</a>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/ebartunek/" target="_blank">
+          <a href="https://www.aedin.com/in/ebartunek/" target="_blank">
             <span aria-hidden="true">
               <LinkedinIcon />
             </span>
-            <span class="sr-only">LinkedIn</span>
+            <span class="sr-only">aedIn</span>
           </a>
         </li>
         <li>
