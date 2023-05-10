@@ -14,7 +14,7 @@ export default component$(() => {
             <div q:slot="title">404 Error - Page Not Found</div>
             <div q:slot="centered">
               <Image src="404-page-img.png" width={200} height={200} background="#ccc" />
-              <p>Sorry, it looks I haven't written any post at that route.</p>
+              <p>Sorry, it looks I don't have any page at that route.</p>
             </div>
           </Contentbox>
         </div>
