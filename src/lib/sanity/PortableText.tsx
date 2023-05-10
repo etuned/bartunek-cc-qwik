@@ -1,16 +1,17 @@
-import { component$ } from "@builder.io/qwik"
+import { Fragment, component$ } from "@builder.io/qwik"
 import { toHTML} from "@portabletext/to-html"
 
 interface Props {
     render?: [any];
+    customComponents?: {};
 }
 
-export default component$<Props>(({render=[]}) =>  {
+export default component$<Props>(({render=[],  customComponents = {}}) =>  {
   
-    const HTMLasString = toHTML(render, { components: {}}).toString()
+    const HTMLasString = toHTML(render, { components: customComponents}).toString()
      
     return (
-        <div dangerouslySetInnerHTML={ HTMLasString} />
+        <div dangerouslySetInnerHTML={HTMLasString} />
     );
   }
 );
