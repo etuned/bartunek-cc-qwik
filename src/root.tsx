@@ -1,11 +1,4 @@
-import {
-  $,
-  component$,
-  useOn,
-  useOnDocument,
-  useOnWindow,
-  useVisibleTask$,
-} from "@builder.io/qwik";
+import { $, component$, useOnDocument } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { QwikPartytown } from "./components/partytown/partytown";
