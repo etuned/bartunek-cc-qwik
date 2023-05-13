@@ -22,7 +22,7 @@ export default component$(() => {
       // @ts-ignore-next-line
       const GtmUrl = event?.target?.getElementById("gtm");
       // @ts-ignore-next-line
-      const scriptTag = event?.target?.getElementById("gtm");
+      const scriptTag = event?.target?.getElementById("gtag");
       if (import.meta.env.PROD) {
         GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
         scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
