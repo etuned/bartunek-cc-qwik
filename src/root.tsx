@@ -23,10 +23,8 @@ export default component$(() => {
       const GtmUrl = event?.target?.getElementById("gtm");
       // @ts-ignore-next-line
       const scriptTag = event?.target?.getElementById("gtm");
-      if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
+      if (import.meta.env.PROD) {
         GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
-      }
-      if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
         scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
         console.log("[PROD]: GA4 init");
       } else {
