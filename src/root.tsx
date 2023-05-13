@@ -1,4 +1,11 @@
-import { component$, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  $,
+  component$,
+  useOn,
+  useOnDocument,
+  useOnWindow,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { QwikPartytown } from "./components/partytown/partytown";
@@ -13,22 +20,28 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
 
-  // I do not like this method. Need to refactor for better performance.
+  useOnDocument(
+    "DOMContentLoaded",
+    $((event) => {
+      // ts has no idea what target will be. Ignoring errors because the ids are guaranteed.
+      // Would be nice if we could setup ts to be informed of this though...
 
-  useVisibleTask$(() => {
-    const GtmUrl = document.getElementById("gtm");
-    const scriptTag = document.getElementById("gtag");
-    if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
-      GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
-    }
-    if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
-      scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
-      console.log("[PROD]: GA4 init");
-    } else {
-      console.log("[DEV]: GA4 skipped");
-    }
-    return () => {};
-  });
+      // @ts-ignore-next-line
+      const GtmUrl = event?.target?.getElementById("gtm");
+      // @ts-ignore-next-line
+      const scriptTag = event?.target?.getElementById("gtm");
+      if ((import.meta.env.PROD || !import.meta.env.DEV) && GtmUrl) {
+        GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
+      }
+      if ((import.meta.env.PROD || !import.meta.env.DEV) && scriptTag) {
+        scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
+        console.log("[PROD]: GA4 init");
+      } else {
+        console.log("[DEV]: GA4 skipped");
+      }
+    }),
+  );
+
   return (
     <QwikCityProvider>
       <head>
