@@ -1,5 +1,6 @@
 
 export interface Post {
+    index: number;
     _id?: string;
     _createdAt?: string;
     _updatedAt?: string;
@@ -102,6 +103,7 @@ export interface Project {
 }
 
 interface Author {
+    index?: number;
     _id: string;
     name: string;
     image: {

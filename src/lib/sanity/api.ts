@@ -12,9 +12,9 @@ export async function getData( query: string ) {
 
 export async function getPosts( slug?: string, order?: "asc" | "desc", slice?: `[${number}]` | `[${number}...${number}]`) {
     const postQuery = `
-    *[_type == "post"  ${slug ? `&& slug.current == "${slug}" ` : ''}]${
+    *[_type == "post"${slug ? ` && slug.current == "${slug}" ` : ''}]${
       slice ? slice : ''
-  }${order ? `| order(date ${order})`: ''} 
+  }${order ? ` | order(date ${order})`: ''} 
     {
         _id,
         title,
@@ -67,7 +67,7 @@ export async function getPosts( slug?: string, order?: "asc" | "desc", slice?: `
 
 export async function getProjects(order?: "asc" | "desc", slice?: `[${number}]` | `[${number}...${number}]`, isNotInProgress?: boolean) {
     const projectQuery = `
-  *[_type == "project" ${isNotInProgress ? "&& dates.isInProgress" : ''}]${
+  *[_type == "project"${isNotInProgress ? " && dates.isInProgress" : ''}]${
       slice ? slice : ''
   }${order ? `| order(dates.startDate ${order})`: ''}{
       _id,
