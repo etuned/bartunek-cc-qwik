@@ -16,7 +16,7 @@ export default component$<Post>(({ index, title, date, mainImage, authors, short
         <p>
           {date && (
             <>
-              Published
+              Published on{" "}
               {new Date(date).toLocaleDateString(undefined, {
                 year: "numeric",
                 month: "numeric",
@@ -26,9 +26,13 @@ export default component$<Post>(({ index, title, date, mainImage, authors, short
           )}
         </p>
         <ul>
-          {authors?.map(({ _id, name }) => (
-            <li key={_id}>{name}</li>
-          ))}
+          {(authors?.length as number) > 1 && (
+            <>
+              {authors?.map(({ _id, name }) => (
+                <li key={_id}>{name}</li>
+              ))}
+            </>
+          )}
         </ul>
       </div>
       <div class={index % 2 == 0 ? "image" : "image-reverse"}>
