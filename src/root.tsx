@@ -1,4 +1,4 @@
-import { $, component$, useOnDocument } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { QwikPartytown } from "./components/partytown/partytown";
@@ -13,25 +13,7 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
 
-  useOnDocument(
-    "DOMContentLoaded",
-    $((event) => {
-      // ts has no idea what target will be. Ignoring errors because the ids are guaranteed.
-      // Would be nice if we could setup ts to be informed of this though...
-
-      // @ts-ignore-next-line
-      const GtmUrl = event?.target?.getElementById("gtm");
-      // @ts-ignore-next-line
-      const scriptTag = event?.target?.getElementById("gtag");
-      if (import.meta.env.PROD) {
-        GtmUrl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R");
-        scriptTag.innerText = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
-        console.log("[PROD]: GA4 init");
-      } else {
-        console.log("[DEV]: GA4 skipped");
-      }
-    }),
-  );
+  const ga4Script = `window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments)}gtag('js', new Date());gtag('config', 'G-MCCJK1H53R');`;
 
   return (
     <QwikCityProvider>
@@ -40,8 +22,13 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
         <QwikPartytown forward={["dataLayer.push"]} />
-        <script type="text/partytown" id="gtm" />
-        <script type="text/partytown" id="gtag" />
+        {import.meta.env.PROD && (
+          <script
+            type="text/partytown"
+            src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
+            dangerouslySetInnerHTML={ga4Script}
+          />
+        )}
       </head>
       <body lang="en">
         <RouterOutlet />
