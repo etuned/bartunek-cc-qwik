@@ -23,11 +23,13 @@ export default component$(() => {
         <RouterHead />
         <QwikPartytown forward={["dataLayer.push"]} />
         {import.meta.env.PROD && (
-          <script
-            type="text/partytown"
-            src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
-            dangerouslySetInnerHTML={ga4Script}
-          />
+          <>
+            <script
+              type="text/partytown"
+              src="https://www.googletagmanager.com/gtag/js?id=G-MCCJK1H53R"
+            />
+            <script type="text/partytown" dangerouslySetInnerHTML={ga4Script} />
+          </>
         )}
       </head>
       <body lang="en">
