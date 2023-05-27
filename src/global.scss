@@ -97,5 +97,6 @@ a:hover {
 .grid {
   display: grid;
   align-items: center;
+  column-gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
