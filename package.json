@@ -2,7 +2,7 @@
   "name": "bartunek-cc-qwik",
   "description": "Edwin Bartunek's personal site",
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=18.0.0"
   },
   "private": true,
   "scripts": {
