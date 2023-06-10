@@ -1,8 +1,8 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "App with Routing built-in (recommended)",
+  "name": "bartunek-cc-qwik",
+  "description": "Edwin Bartunek's personal site",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.16.0"
   },
   "private": true,
   "scripts": {
