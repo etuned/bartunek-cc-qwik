@@ -107,12 +107,17 @@ export default component$(() => {
   }
 });
 
-export const head: DocumentHead = {
-  title: `Blog Post | Edwin Bartunek`,
-  meta: [
-    {
-      name: "description",
-      content: "Various topics about the web and life in general according to Edwin.",
-    },
-  ],
+export const head: DocumentHead = ({ resolveValue }) => {
+  const { title, short } = resolveValue(usePostByParam);
+  return {
+    title: `${title ? title : "A Blog Post"} | Edwin Bartunek`,
+    meta: [
+      {
+        name: "description",
+        content: short
+          ? short
+          : "Various topics about the web and life in general according to Edwin.",
+      },
+    ],
+  };
 };
