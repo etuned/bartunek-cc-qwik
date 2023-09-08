@@ -29,11 +29,11 @@ export default component$(() => {
           <a href="/blog">Blog</a>
         </li>
         <li>
-          <a href="https://www.aedin.com/in/ebartunek/" target="_blank">
+          <a href="https://www.linkedin.com/in/ebartunek/" target="_blank">
             <span aria-hidden="true">
               <LinkedinIcon />
             </span>
-            <span class="sr-only">aedIn</span>
+            <span class="sr-only">LinkedIn</span>
           </a>
         </li>
         <li>
