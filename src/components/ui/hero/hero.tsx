@@ -23,8 +23,8 @@ export default component$(() => {
           </p>
           <p>
             Currently, I am working at{" "}
-            <a href="https://www.zehitomo.com" target="_blank">
-              Zehitomo
+            <a href="https://www.rakuten.co.jp" target="_blank">
+              Rakuten
             </a>
             .
           </p>
