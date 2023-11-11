@@ -18,7 +18,7 @@ export default component$(() => {
             </div>
             <>
               <p>
-                Edwin Bartunek is a software engineer and currently working at Zehitomo in Japan.
+                Edwin Bartunek is a software engineer and currently working at Rakuten in Japan.
               </p>
             </>
           </Infobox>
