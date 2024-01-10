@@ -11,11 +11,7 @@ export default extendConfig(baseConfig, () => {
       },
     },
     plugins: [cloudflarePagesAdapter({
-      ssg: {
-        include: ['/*'],
-        origin: 'https://www.bartunek.io',
-        sitemapOutFile: 'sitemap.xml',
-      },
+      ssg: {sitemapOutFile: null, include: []}
     }),
   ],
   };
