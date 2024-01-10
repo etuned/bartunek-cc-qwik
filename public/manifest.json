@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "bartunek-cc-qwik",
+  "name": "bartunek-io",
   "short_name": "Edwin Bartunek",
   "start_url": ".",
   "display": "standalone",
