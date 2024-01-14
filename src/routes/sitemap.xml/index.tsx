@@ -17,25 +17,23 @@ export const onRequest: RequestHandler = async (requestEvent): Promise<any> => {
 //         <loc>${BASE_URL}blog/${project.slug}</loc>
 //     </url>`)}
 
-  // Next, an XML document representing a sitemap for search engines is generated.
-  //   <lastmod>${post.last_publication_date}</lastmod>
   const content = `
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>${BASE_URL}/</loc></url>
-    <url><loc>${BASE_URL}/about/</loc></url>
-    <url><loc>${BASE_URL}/blog/</loc></url>
-    <url><loc>${BASE_URL}/projects/</loc></url>
-    ${posts.map(
-      (post: { slug: string, updatedAt: string }) => 
-    `<url>
-       <loc>${BASE_URL}/blog/${post.slug}</loc>
-       <lastmod>${post.updatedAt}</lastmod>
-        <priority>0.7</priority>
-    </url>`)}
-    </urlset>`;
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url><loc>${BASE_URL}/</loc></url>
+            <url><loc>${BASE_URL}/about/</loc></url>
+            <url><loc>${BASE_URL}/blog/</loc></url>
+            <url><loc>${BASE_URL}/projects/</loc></url>
+            ${posts.map((post: { slug: string, updatedAt: string }) => 
+            `<url>
+              <loc>${BASE_URL}/blog/${post.slug}</loc>
+              <lastmod>${post.updatedAt}</lastmod>
+                <priority>0.7</priority>
+            </url>`
+            )}
+            </urlset>`;
 
-  // An HTTP response with the XML content of the sitemap is created.
-  const response = new Response(content, {
+  // I am not a fan of this.. There should be another way...
+  const response = new Response(content.replace(/,/g, ""), {
     status: 200,
     headers: {
       "Content-Type": "application/xml",

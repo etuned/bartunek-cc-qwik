@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: https://www.bartunek.io/~partytown/
 
 sitemap: https://www.bartunek.io/sitemap.xml
