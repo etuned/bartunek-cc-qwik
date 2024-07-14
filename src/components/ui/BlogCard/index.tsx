@@ -47,10 +47,10 @@ export default component$<Post>(({ index, title, date, mainImage, authors, short
           height={100}
         />
       </div>
-      <p>{short && short}</p>
-      <p>
-        <a href={`/blog/${slug}`}>Read more</a>
-      </p>
+      <a href={`/blog/${slug}`}>
+        <p>{short && short}...</p>
+        <p class="more">Read more</p>
+      </a>
     </div>
   );
 });
