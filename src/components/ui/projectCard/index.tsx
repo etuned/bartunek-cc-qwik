@@ -32,7 +32,9 @@ export default component$<Project>(
               <p>{short && short}</p>
               {codeUrl?.link && !codeUrl.isPrivate ? <a href={codeUrl.link}>Source Code</a> : null}
               {codeUrl?.link && !codeUrl.isPrivate ? " | " : null}
-              {liveUrl?.link && !liveUrl.isPrivate ? <a href={liveUrl.link}>Live Demo</a> : null}
+              {liveUrl?.link && !liveUrl.isPrivate ? (
+                <a href={liveUrl.link}>Deployed Code</a>
+              ) : null}
             </div>
             <h4>The technologies includes:</h4>
             <ul>
