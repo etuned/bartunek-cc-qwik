@@ -18,15 +18,25 @@ export default component$(() => {
           </p>
           <h2>I help build the web.</h2>
           <p>
-            I am a software engineer, focused on creating accessible, user friendly software
+            I am a senior software engineer, focused on creating accessible, user friendly software
             platforms on the web. I am also obssesed with pizza and coffee!
           </p>
           <p>
-            Currently, I am working at{" "}
-            <a href="https://www.rakuten.co.jp" target="_blank">
-              Rakuten
-            </a>
-            .
+            Currently, I am{" "}
+            {author.value.employer && author.value.employer?.name
+              ? "working at"
+              : "taking some time off"}
+            {author.value.employer?.website ? (
+              <>
+                {" "}
+                <a href={author.value.employer?.website} target="_blank">
+                  {author.value.employer?.name}
+                </a>
+              </>
+            ) : author.value.employer?.name ? (
+              ` ${author.value.employer?.name}`
+            ) : undefined}
+            {"."}
           </p>
         </div>
         <Image

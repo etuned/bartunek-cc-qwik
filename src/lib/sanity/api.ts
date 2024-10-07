@@ -160,6 +160,23 @@ export async function getAuthor(authorName?: string, slice: number = 0) {
           background, foreground, title
         }
         },
+        "employer": employer->{
+        _id,
+        name,
+        website,
+      image{
+        alt,
+        "src": image.asset->url,
+        "blurhash": image.asset->metadata.blurHash,
+        "lqip": image.asset->metadata.lqip,
+        "colorDominant": image.asset->metadata.palette.dominant{
+          background, foreground, title
+        },
+        "colorVibrant": image.asset->metadata.palette.vibrant{
+          background, foreground, title
+        }
+        },
+      },
     }
   `
     const response = await client
