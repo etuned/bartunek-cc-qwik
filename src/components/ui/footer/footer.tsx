@@ -1,7 +1,7 @@
 import { component$, useStyles$ } from '@builder.io/qwik';
 import { GithubIcon } from '../icons/github';
 import { LinkedinIcon } from '../icons/linkedin';
-import { TwitterIcon } from '../icons/twitter';
+import { BlueskyIcon } from '../icons/bluesky';
 import styles from './footer.scss?inline';
 import GradientLine from '../gradientLine';
 
@@ -34,9 +34,9 @@ const currentYear = date.toLocaleString('default', { year: 'numeric' })
             </a>
         </li>
         <li>
-            <a href="https://www.twitter.com/edwinbartunek" target="_blank">
+            <a href="https://bsky.app/profile/bartunek.io" target="_blank">
                 <span aria-hidden="true">
-                    <TwitterIcon />
+                    <BlueskyIcon />
                 </span>
                 <span class="sr-only">Twitter</span>
             </a>
