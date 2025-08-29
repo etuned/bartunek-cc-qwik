@@ -1,10 +1,9 @@
 import { component$, useStyles$ } from '@builder.io/qwik';
 import { GithubIcon } from '../icons/github';
 import { LinkedinIcon } from '../icons/linkedin';
-import { TwitterIcon } from '../icons/twitter';
+import { BlueskyIcon } from '../icons/bluesky';
 import styles from './footer.scss?inline';
 import GradientLine from '../gradientLine';
-import { BlueskyIcon } from '../icons/bluesky';
 
 export default component$(() => {
   useStyles$(styles);
