@@ -4,6 +4,7 @@ import { LinkedinIcon } from '../icons/linkedin';
 import { TwitterIcon } from '../icons/twitter';
 import styles from './footer.scss?inline';
 import GradientLine from '../gradientLine';
+import { BlueskyIcon } from '../icons/bluesky';
 
 export default component$(() => {
   useStyles$(styles);
@@ -34,11 +35,11 @@ const currentYear = date.toLocaleString('default', { year: 'numeric' })
             </a>
         </li>
         <li>
-            <a href="https://www.twitter.com/edwinbartunek" target="_blank">
+            <a href="https://bsky.app/profile/bartunek.io" target="_blank">
                 <span aria-hidden="true">
-                    <TwitterIcon />
+                    <BlueskyIcon />
                 </span>
-                <span class="sr-only">Twitter</span>
+                <span class="sr-only">Bluesky</span>
             </a>
         </li>
     </ul>
